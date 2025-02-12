@@ -1,0 +1,15 @@
+data = io.loadmat('./data1.mat')
+strain = data['strain']
+stress_train = data['stress_train']
+stress_test = data['stress_test']
+stress_weight_train = data['stress_weight_train']
+stress_weight_test = data['stress_weight_test']
+phase_train = data['phase_train']
+phase_test = data['phase_test']
+angle_train = data['angle_train']
+angle_test = data['angle_test']
+num_pts = data['num_pts']
+num_cs = data['num_cs']
+strain = strain.squeeze()
+num_cs = num_cs[0,0]
+num_pts = num_pts[0,0]

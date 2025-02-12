@@ -1,0 +1,23 @@
+seed = 23
+np.random.seed(seed)
+torch.manual_seed(seed)
+
+seed = 123
+np.random.seed(seed)
+torch.manual_seed(seed)
+
+seed = 1234
+np.random.seed(seed)
+torch.manual_seed(seed)
+
+seed = 5555
+np.random.seed(seed)
+torch.manual_seed(seed)
+
+seed = 5
+np.random.seed(seed)
+torch.manual_seed(seed)
+
+seed = 7891
+np.random.seed(seed)
+torch.manual_seed(seed)
