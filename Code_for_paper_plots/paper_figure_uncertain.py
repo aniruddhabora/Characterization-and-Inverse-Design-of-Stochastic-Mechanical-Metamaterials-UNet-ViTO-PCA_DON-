@@ -82,12 +82,12 @@ def plot_curves():
     stress_weight_test_6 = data6['stress_weight_test']
 
 
-    stress_test_pred_1 = np.load('UNet/frward_test/Unet_Test_pred_1.npy',allow_pickle=True)
-    stress_test_pred_2 = np.load('UNet_seed2/frward_test/Unet_Test_pred_2.npy',allow_pickle=True)
-    stress_test_pred_3 = np.load('UNet_seed3/frward_test/Unet_Test_pred_3.npy',allow_pickle=True)
-    stress_test_pred_4 = np.load('UNet_seed4/frward_test/Unet_Test_pred_4.npy',allow_pickle=True)
-    stress_test_pred_5 = np.load('UNet_seed5/frward_test/Unet_Test_pred_5.npy',allow_pickle=True)
-    stress_test_pred_6 = np.load('UNet_seed6/frward_test/Unet_Test_pred_6.npy',allow_pickle=True)
+    stress_test_pred_1 = np.load('UNet/Unet_Test_pred_1.npy',allow_pickle=True)
+    stress_test_pred_2 = np.load('UNet/Unet_Test_pred_2.npy',allow_pickle=True)
+    stress_test_pred_3 = np.load('UNet/Unet_Test_pred_3.npy',allow_pickle=True)
+    stress_test_pred_4 = np.load('UNet/Unet_Test_pred_4.npy',allow_pickle=True)
+    stress_test_pred_5 = np.load('UNet/Unet_Test_pred_5.npy',allow_pickle=True)
+    stress_test_pred_6 = np.load('UNet/Unet_Test_pred_6.npy',allow_pickle=True)
 
 
     #data_final_1 = np.load('./{}/Output/SavedOutputs_{}.npy'.format(case_name1, 'final'), allow_pickle=True).item()
