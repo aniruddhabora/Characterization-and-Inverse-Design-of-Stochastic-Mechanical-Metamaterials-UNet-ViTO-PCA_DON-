@@ -1,4 +1,4 @@
-#### Plotting code from : Dr. Enrui Zhang (https://www.linkedin.com/in/enrui-zhang/)
+#### Plotting code from : Dr. Qianying Cao and Dr. Enrui Zhang (https://www.linkedin.com/in/enrui-zhang/)
 
 import os
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
