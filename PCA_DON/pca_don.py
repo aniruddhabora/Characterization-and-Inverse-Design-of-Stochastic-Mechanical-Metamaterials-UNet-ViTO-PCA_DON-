@@ -77,13 +77,7 @@ class PCAFixedTrunkNet(nn.Module):
         coefficients_01 = coefficients[:,0:62]
         coefficients_02 = coefficients[:,62:62+62]
         coefficients_03 = coefficients[:,62+62:62+62+62]
-        print('brach 01: ', coefficients_01.shape)
-        #print(coefficients_02.shape)
-        #print(coefficients_03.shape)
-
-        print('pca 01 shape:',self.pca_basis_01.shape)
-
-        #sys.exit()
+        
         # Use the coefficients with the fixed PCA basis
         # Assuming the pca_basis is shaped [output_dim, num_basis] for matrix multiplication compatibility
         # and coefficients are shaped [batch_size, num_basis]
@@ -91,17 +85,10 @@ class PCAFixedTrunkNet(nn.Module):
         output_02 = torch.matmul(coefficients_02, self.pca_basis_02) + self.mean_function_02
         output_03 = torch.matmul(coefficients_03, self.pca_basis_03) + self.mean_function_03
 
-        print('output shape:', output_01.shape)
-        sys.exit()
-        #out = self.output_layer(output)
-        #print(out.shape)
-        #sys.exit()
         out = torch.stack((output_01, output_02, output_03), dim=1)
         out = torch.reshape(out,(out.shape[0],out.shape[1], 2 ,51))
         out = out*y[None,None,None,:]
-        #print(out.shape)
-        #sys.exit()
-
+        
         return out
 
     def loss(self, true, pred, weights):
@@ -114,34 +101,3 @@ class PCAFixedTrunkNet(nn.Module):
 
         return loss_value
 
-'''
-
-class DONForClassification(PCAFixedTrunkNet):
-    def __init__(self, par, num_classes):
-        super(DONForClassification, self).__init__(par)
-        n_channels = self.par['out_ch']
-
-        # Assuming 'n_channels' corresponds to the output channels of the last decoder block
-        # Global Average Pooling to reduce each feature map to a single number
-        self.global_avg_pool = nn.AdaptiveAvgPool2d((1, 1))
-
-        # Fully connected layer for classification
-        # The number of output features of global_avg_pool is the same as the number of output channels
-        # of the last decoder block. Adjust 'out_features' to match the number of classes for classification.
-        self.classifier = nn.Linear(n_channels, num_classes)
-
-    def forward(self, x):
-        # Use the original forward pass up to the last decoder block
-        out = super().forward(x)
-
-        # Apply global average pooling to the output of the last decoder block
-        out = self.global_avg_pool(out)
-
-        # Flatten the output for the classifier
-        out = torch.flatten(out, 1)
-
-        # Classifier to predict class probabilities
-        out = self.classifier(out)
-
-        return out
-'''        
